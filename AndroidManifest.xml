@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.wyl.bus.activity.WayActivity"
+            android:label="@string/title_activity_way" >
+        </activity>
+        <activity
+            android:name="com.wyl.bus.activity.DetailActivity"
+            android:label="@string/title_activity_detail" >
+        </activity>
     </application>
 
 </manifest>

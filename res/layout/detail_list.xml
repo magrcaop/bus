@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" 
+    android:background="#ffffff" 
+    >
+
+    <TextView
+        android:id="@+id/detail_list_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:text="序号"
+        android:textColor="#999999"
+        android:textSize="14dip" />
+
+    <TextView
+        android:id="@+id/detail_list_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/detail_list_num"
+        android:text="站名"
+        android:textColor="#333333"
+        android:textSize="16dip" />
+
+</RelativeLayout> 
