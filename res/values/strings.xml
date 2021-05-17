@@ -6,5 +6,7 @@
     <string name="hello_world">欢迎使用“杭州公交 一览”，点击下面的按钮查看</string>
     <string name="title_activity_way">公交列表</string>
     <string name="title_activity_detail">公交路线</string>
+    <string name="determine">确定</string>
+    <string name="confirmation">确认</string>
 
 </resources>
