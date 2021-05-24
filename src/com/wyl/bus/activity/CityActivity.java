@@ -48,11 +48,11 @@ public class CityActivity extends Activity {
 		return true;
 	}
 	
-	public boolean onKeyDown(int keyCode, KeyEvent event){
-		if(keyCode == KeyEvent.KEYCODE_BACK){
-			System.exit(0);
-		}
-		return true;
-	}
+//	public boolean onKeyDown(int keyCode, KeyEvent event){
+//		if(keyCode == KeyEvent.KEYCODE_BACK){
+//			System.exit(0);
+//		}
+//		return true;
+//	}
 
 }

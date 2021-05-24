@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/list_detail_title"
-        android:layout_centerHorizontal="true" >
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/list_detail_title" >
 
     </ListView>
 
@@ -28,7 +28,7 @@
         android:layout_marginRight="34dp"
         android:text="时间"
         android:textColor="#999999"
-        android:textSize="14dip" />
+        android:textSize="16dip" />
 
     <TextView
         android:id="@+id/list_detail_title"
@@ -38,6 +38,6 @@
         android:layout_alignParentTop="true"
         android:text="标题"
         android:textColor="#333333"
-        android:textSize="16dip" />
+        android:textSize="18dip" />
 
 </RelativeLayout>

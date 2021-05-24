@@ -12,12 +12,14 @@ import android.graphics.Shader.TileMode;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.wyl.bus.R;
+import com.wyl.bus.common.MyCount;
 import com.wyl.bus.util.PropertiesUtil;
 import com.wyl.bus.util.StringUtil;
 
@@ -31,11 +33,18 @@ public class WayActivity extends Activity {
 	 */
 	private SimpleAdapter mListAdapter;
 	
+	/**
+	 * 上行1，下行2
+	 */
+	private String state;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_way);
+		
+		MyCount myCount = (MyCount) getApplication();
+		state = myCount.getState();
 		
 		mListView = (ListView) findViewById(R.id.list_view_way);
 		
@@ -50,8 +59,8 @@ public class WayActivity extends Activity {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("title", titles[i]+"路");
 			
-			map.put("content", StringUtil.iso2Utf8((String) pro.get(titles[i]+"_content_1")));
-			map.put("time", StringUtil.iso2Utf8((String) pro.get(titles[i]+"_time_1")));
+			map.put("content", StringUtil.iso2Utf8((String) pro.get(titles[i]+"_content_"+state)));
+			map.put("time", StringUtil.iso2Utf8((String) pro.get(titles[i]+"_time_"+state)));
 			
 			mList.add(map);
 		}
@@ -77,6 +86,20 @@ public class WayActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.way, menu);
+//		findViewById(R.id.action_settings).setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				System.out.println("点击了列表里的切换");
+//				MyCount myCount = (MyCount) getApplication();
+//				String state = myCount.getState();
+//				if("1".equals(state)){
+//					myCount.setState("2");
+//				}else {
+//					myCount.setState("1");
+//				}
+//			}
+//		});
 		return true;
 	}
 

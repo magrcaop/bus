@@ -9,7 +9,7 @@
         android:id="@+id/list_row_title" 
         android:layout_width="wrap_content" 
         android:layout_height="wrap_content" 
-        android:textSize="16dip" 
+        android:textSize="18dip" 
         android:textColor="#333333"
         android:text="标题"
         />
@@ -24,7 +24,7 @@
          android:layout_marginRight="23dp"
          android:text=">"
          android:textColor="#999999"
-         android:textSize="14dip" />
+         android:textSize="16dip" />
 
      <TextView
          android:id="@+id/list_row_content"
@@ -34,7 +34,7 @@
          android:layout_below="@+id/list_row_title"
          android:text="内容"
          android:textColor="#999999"
-         android:textSize="12dip" />
+         android:textSize="14dip" />
 
      <TextView
          android:id="@+id/list_row_state"
@@ -45,6 +45,6 @@
          android:layout_toLeftOf="@+id/list_row_to_detail"
          android:text="时间"
          android:textColor="#999999"
-         android:textSize="14dip" />
+         android:textSize="16dip" />
 
 </RelativeLayout> 
