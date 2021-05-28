@@ -8,11 +8,10 @@ import java.util.Properties;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Shader.TileMode;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -45,7 +44,7 @@ public class WayActivity extends Activity {
 		
 		MyCount myCount = (MyCount) getApplication();
 		state = myCount.getState();
-		
+	
 		mListView = (ListView) findViewById(R.id.list_view_way);
 		
 		mList = new ArrayList<Map<String,Object>>();
@@ -86,21 +85,26 @@ public class WayActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.way, menu);
-//		findViewById(R.id.action_settings).setOnClickListener(new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				System.out.println("点击了列表里的切换");
-//				MyCount myCount = (MyCount) getApplication();
-//				String state = myCount.getState();
-//				if("1".equals(state)){
-//					myCount.setState("2");
-//				}else {
-//					myCount.setState("1");
-//				}
-//			}
-//		});
 		return true;
 	}
-
+	
+	public boolean onOptionsItemSelected(MenuItem item){
+		System.out.println(item.getItemId());
+		switch (item.getItemId()) {
+			case R.id.action_settings:
+				MyCount myCount = (MyCount) getApplication();
+				String state = myCount.getState();
+				if("1".equals(state)){
+					myCount.setState("2");
+				}else {
+					myCount.setState("1");
+				}
+				startActivity(new Intent(WayActivity.this, WayActivity.class));
+				finish();
+				break;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+		return true;
+	}
 }

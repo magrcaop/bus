@@ -6,7 +6,7 @@ public class MyCount extends Application{
 	/**
 	 * 选择城市
 	 */
-	private String city;
+	private String city = "hzs";
 	/**
 	 * 选择上下行：上行1，下行2
 	 */

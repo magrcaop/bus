@@ -9,9 +9,9 @@ import java.util.Properties;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -37,12 +37,16 @@ public class DetailActivity extends Activity {
 	 * 上行1，下行2
 	 */
 	private String state;
+	/**
+	 * 传来的第几路
+	 */
+	private String wayNum;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detail);
-	System.out.println("DetailActivity中的state=="+((MyCount)getApplication()).getState());	
+
 		MyCount myCount = (MyCount) getApplication();
 		state = myCount.getState();
 		
@@ -51,8 +55,8 @@ public class DetailActivity extends Activity {
 		time = (TextView) findViewById(R.id.list_detail_time);
 		
 		Intent getIntent = getIntent();
-		//传来的第几路
-		String wayNum = (String) getIntent.getSerializableExtra("wayNum");
+		
+		wayNum = (String) getIntent.getSerializableExtra("wayNum");
 
 		way.setText(wayNum+"路");
 		Properties p = PropertiesUtil.getProperties(getApplicationContext(), "bus.properties");
@@ -60,9 +64,9 @@ public class DetailActivity extends Activity {
 		
 		mList = new ArrayList<Map<String,Object>>();
 		Properties pro = PropertiesUtil.getProperties(getApplicationContext(), "detail.properties");
-		String detail = (String) pro.get(wayNum+"_1");
-		String resultDetail = StringUtil.iso2Utf8(detail);
-		String[] details = resultDetail.split(",");
+Log.i("详情页", "wayNum:"+wayNum+"==state:"+state+"===");
+		String detail = StringUtil.iso2Utf8((String) pro.get(wayNum+"_"+state));
+		String[] details = detail.split(",");
 		for (int i=0; i<details.length; i++) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("num", i+1);
@@ -82,13 +86,26 @@ public class DetailActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.detail, menu);
-//		findViewById(R.id.action_settings).setOnClickListener(new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				System.out.println("点击了详情里的切换");
-//			}
-//		});
+		return true;
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item){
+		System.out.println(item.getItemId());
+		switch (item.getItemId()) {
+			case R.id.action_settings:
+				MyCount myCount = (MyCount) getApplication();
+				String state = myCount.getState();
+				if("1".equals(state)){
+					myCount.setState("2");
+				}else {
+					myCount.setState("1");
+				}
+				startActivity(new Intent(DetailActivity.this, DetailActivity.class).putExtra("wayNum", wayNum));
+				finish();
+				break;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 		return true;
 	}
 
