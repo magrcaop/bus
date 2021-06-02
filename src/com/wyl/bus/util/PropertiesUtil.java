@@ -17,6 +17,7 @@ public class PropertiesUtil {
 	public static Properties getProperties(Context c, String filePath){
 		Properties props = new Properties();
 		try {
+			
 			//方法一：通过activity中的context攻取setting.properties的FileInputStream
 			InputStream in = c.getAssets().open(filePath);
 			//方法二：通过class获取setting.properties的FileInputStream

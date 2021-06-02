@@ -9,7 +9,6 @@ import java.util.Properties;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -38,6 +37,10 @@ public class DetailActivity extends Activity {
 	 */
 	private String state;
 	/**
+	 * 城市
+	 */
+	private String city;
+	/**
 	 * 传来的第几路
 	 */
 	private String wayNum;
@@ -49,6 +52,7 @@ public class DetailActivity extends Activity {
 
 		MyCount myCount = (MyCount) getApplication();
 		state = myCount.getState();
+		city = myCount.getCity();
 		
 		mListView = (ListView) findViewById(R.id.list_detail);
 		way = (TextView) findViewById(R.id.list_detail_title);
@@ -58,13 +62,13 @@ public class DetailActivity extends Activity {
 		
 		wayNum = (String) getIntent.getSerializableExtra("wayNum");
 
-		way.setText(wayNum+"路");
-		Properties p = PropertiesUtil.getProperties(getApplicationContext(), "bus.properties");
+		way.setText(wayNum.replace("night", "夜班车")+"路");
+		Properties p = PropertiesUtil.getProperties(getApplicationContext(), city+"_bus.properties");
 		time.setText((String) p.get(wayNum+"_time_"+state));
 		
 		mList = new ArrayList<Map<String,Object>>();
-		Properties pro = PropertiesUtil.getProperties(getApplicationContext(), "detail.properties");
-Log.i("详情页", "wayNum:"+wayNum+"==state:"+state+"===");
+		Properties pro = PropertiesUtil.getProperties(getApplicationContext(), city+"_detail.properties");
+
 		String detail = StringUtil.iso2Utf8((String) pro.get(wayNum+"_"+state));
 		String[] details = detail.split(",");
 		for (int i=0; i<details.length; i++) {
@@ -90,7 +94,6 @@ Log.i("详情页", "wayNum:"+wayNum+"==state:"+state+"===");
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item){
-		System.out.println(item.getItemId());
 		switch (item.getItemId()) {
 			case R.id.action_settings:
 				MyCount myCount = (MyCount) getApplication();

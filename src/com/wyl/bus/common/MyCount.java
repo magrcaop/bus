@@ -3,6 +3,7 @@ package com.wyl.bus.common;
 import android.app.Application;
 
 public class MyCount extends Application{
+	private String helloWorld="欢迎使用“杭州公交 一览”，点击下面的按钮查看公交列表";
 	/**
 	 * 选择城市
 	 */
@@ -23,5 +24,11 @@ public class MyCount extends Application{
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+	public String getHelloWorld() {
+		return helloWorld;
+	}
+	public void setHelloWorld(String helloWorld) {
+		this.helloWorld = helloWorld;
 	}
 }

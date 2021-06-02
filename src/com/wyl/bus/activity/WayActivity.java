@@ -36,6 +36,10 @@ public class WayActivity extends Activity {
 	 * 上行1，下行2
 	 */
 	private String state;
+	/**
+	 * 城市
+	 */
+	private String city;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +48,20 @@ public class WayActivity extends Activity {
 		
 		MyCount myCount = (MyCount) getApplication();
 		state = myCount.getState();
-	
+		city = myCount.getCity();
+
 		mListView = (ListView) findViewById(R.id.list_view_way);
 		
 		mList = new ArrayList<Map<String,Object>>();
 
-		Properties pro = PropertiesUtil.getProperties(getApplicationContext(), "bus.properties");
+		Properties pro = PropertiesUtil.getProperties(getApplicationContext(), city+"_bus.properties");
 		String title = StringUtil.iso2Utf8((String) pro.get("way"));
 
 		final String[] titles = title.split(",");
 		
 		for (int i=0; i<titles.length; i++) {
 			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("title", titles[i]+"路");
+			map.put("title", titles[i].replace("night", "夜班车")+"路");
 			
 			map.put("content", StringUtil.iso2Utf8((String) pro.get(titles[i]+"_content_"+state)));
 			map.put("time", StringUtil.iso2Utf8((String) pro.get(titles[i]+"_time_"+state)));
