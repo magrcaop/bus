@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">杭州公交一览</string>
-    <string name="action_settings">设置城市</string>
+    <string name="app_name">公交一览</string>
+    <string name="action_settings_city">城市切换</string>
     <string name="action_settings_switch">上下行切换</string>
     <string name="hello_world">欢迎使用“杭州公交 一览”，点击下面的按钮查看公交列表</string>
     <string name="title_activity_way">公交列表</string>

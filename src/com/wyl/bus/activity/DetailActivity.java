@@ -94,9 +94,21 @@ public class DetailActivity extends Activity {
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item){
+		MyCount myCount = (MyCount) getApplication();
 		switch (item.getItemId()) {
+			case R.id.action_settings_city:
+				String city = myCount.getCity();
+				if("hzs".equals(city)){
+					myCount.setCity("yqs");
+					myCount.setHelloWorld("欢迎使用“乐清公交 一览”，点击下面的按钮查看公交列表");
+				}else {
+					myCount.setCity("hzs");
+					myCount.setHelloWorld("欢迎使用“杭州公交 一览”，点击下面的按钮查看公交列表");
+				}
+				startActivity(new Intent(DetailActivity.this, CityActivity.class));
+				finish();
+				break;
 			case R.id.action_settings:
-				MyCount myCount = (MyCount) getApplication();
 				String state = myCount.getState();
 				if("1".equals(state)){
 					myCount.setState("2");

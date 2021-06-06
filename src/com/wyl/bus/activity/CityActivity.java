@@ -14,7 +14,7 @@ import com.wyl.bus.R;
 import com.wyl.bus.common.MyCount;
 
 public class CityActivity extends Activity {
-	private TextView city_text;
+//	private TextView city_text;
 	private Button btn_to_way;
 	private TextView hello_text;
 	private String helloWorld;
@@ -49,9 +49,9 @@ public class CityActivity extends Activity {
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item){
-		System.out.println(item.getItemId());
+		
 		switch (item.getItemId()) {
-			case R.id.action_settings:
+			case R.id.action_settings_city:
 				MyCount myCount = (MyCount) getApplication();
 				String city = myCount.getCity();
 				if("hzs".equals(city)){
